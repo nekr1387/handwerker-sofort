@@ -250,11 +250,11 @@ export default function Home() {
             <div className="mx-auto max-w-2xl text-center"><p className="eyebrow">Saubere Ergebnisse</p><h2 className="section-title mt-3">Beispiele unserer Arbeiten</h2></div>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                "/1.jpg",
-                "/2.jpg",
-                "/3.jpeg",
+                "/1.JPG",
+                "/2.JPG",
+                "/3.JPEG",
                 "/4.png",
-                "/5.jpg",
+                "/5.JPG",
                 "/6.png",
                 "/7.png",
                 "/8.png",
