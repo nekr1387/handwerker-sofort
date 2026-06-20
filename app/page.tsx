@@ -177,6 +177,41 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section">
+          <div className="container-site">
+            <div className="mx-auto max-w-2xl text-center"><p className="eyebrow">Saubere Ergebnisse</p><h2 className="section-title mt-3">Beispiele unserer Arbeiten</h2></div>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                "/1.JPG",
+                "/2.JPG",
+                "/3.JPEG",
+                "/4.png",
+                "/5.JPG",
+                "/6.png",
+                "/7.png",
+                "/8.png",
+                "/9.png",
+                "/10.png",
+                "/11.png",
+                "/12.png",
+              ].map((src, index) => {
+                const isPortraitImage = index >= 1 && index <= 4;
+
+                return (
+                  <div key={src} className="card grid aspect-[4/3] place-items-center overflow-hidden bg-slate-50 p-3">
+                    <img
+                      src={src}
+                      alt={`Beispiel unserer Arbeit ${index + 1}`}
+                      className={`h-full w-full rounded-2xl ${isPortraitImage ? "bg-slate-100 object-contain object-center" : "object-contain"}`}
+                      loading="lazy"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         <section id="ueber-uns" className="section bg-[#f7f9fc]">
           <div className="container-site grid items-center gap-12 lg:grid-cols-2">
             <div className="relative min-h-[430px] overflow-hidden rounded-[24px] bg-gradient-to-br from-[#0b1220] via-[#10233f] to-[#0f3b4c] p-8 text-white sm:p-12">
@@ -241,41 +276,6 @@ export default function Home() {
                 </div>
               ))}
               <div className="bg-blue-50 p-5 text-sm leading-6 text-[#1456a0]"><strong>Hinweis:</strong> Jeder Auftrag wird individuell bewertet. Gerne erstellen wir ein unverbindliches Angebot.</div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center"><p className="eyebrow">Saubere Ergebnisse</p><h2 className="section-title mt-3">Beispiele unserer Arbeiten</h2></div>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                "/1.JPG",
-                "/2.JPG",
-                "/3.JPEG",
-                "/4.png",
-                "/5.JPG",
-                "/6.png",
-                "/7.png",
-                "/8.png",
-                "/9.png",
-                "/10.png",
-                "/11.png",
-                "/12.png",
-              ].map((src, index) => {
-                const isPortraitImage = index >= 1 && index <= 4;
-
-                return (
-                  <div key={src} className="card grid aspect-[4/3] place-items-center overflow-hidden bg-slate-50 p-3">
-                    <img
-                      src={src}
-                      alt={`Beispiel unserer Arbeit ${index + 1}`}
-                      className={`h-full w-full rounded-2xl ${isPortraitImage ? "bg-slate-100 object-contain object-center" : "object-contain"}`}
-                      loading="lazy"
-                    />
-                  </div>
-                );
-              })}
             </div>
           </div>
         </section>
