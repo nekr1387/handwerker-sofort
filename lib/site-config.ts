@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Handwerker Sofort",
-  city: "[Stadt]",
+  city: "Offenburg und Kehl",
   serviceArea: "Offenburg, Kehl und Ortenaukreis",
   phoneDisplay: "+49 152 21591541",
   phoneHref: "+491234567890",

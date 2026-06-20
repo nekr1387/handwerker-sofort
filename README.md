@@ -13,7 +13,7 @@ Produktionsnahes Next.js-Projekt für einen deutschen Handwerker- und Kleinrepar
 
 Alle zentralen Platzhalter befinden sich in `lib/site-config.ts`:
 
-- Stadt und Einsatzgebiet
+- Ort und Einsatzgebiet
 - Telefonnummer und WhatsApp-Nummer
 - E-Mail-Adresse
 - Firmenanschrift
