@@ -161,16 +161,16 @@ export default function Home() {
           <div className="container-site">
             <div className="mx-auto max-w-2xl text-center">
               <p className="eyebrow">Alles aus einer Hand</p>
-              <h2 className="section-title mt-3">Unsere Leistungen</h2>
-              <p className="section-copy mt-5">Von der kleinen Reparatur bis zur kompletten Montage: Wir packen dort an, wo Sie Unterstützung brauchen.</p>
+              <h2 className="section-title mt-3 max-md:text-[1.625rem]">Unsere Leistungen</h2>
+              <p className="section-copy mt-4 text-[15px] leading-7 md:mt-5 md:text-[clamp(1.05rem,1.6vw,1.18rem)] md:leading-[1.85]">Von der kleinen Reparatur bis zur kompletten Montage: Wir packen dort an, wo Sie Unterstützung brauchen.</p>
             </div>
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="mt-9 grid grid-cols-[repeat(2,minmax(0,1fr))] gap-3 md:mt-14 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4">
               {services.map(({ title, description, icon: Icon }) => (
-                <article key={title} className="card group flex flex-col p-6 hover:-translate-y-1 hover:border-blue-200">
-                  <div className="grid h-[52px] w-[52px] place-items-center rounded-2xl bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white"><Icon size={24} /></div>
-                  <h3 className="mt-5 text-lg font-bold text-[#0d1b2f]">{title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{description}</p>
-                  <a href="#kontakt" className="mt-5 flex items-center gap-1 text-sm font-bold tracking-[.01em] text-[#2563eb]">Anfragen <ChevronRight size={16} /></a>
+                <article key={title} className="card group grid min-h-[150px] w-full min-w-0 content-start rounded-[18px] p-3.5 hover:-translate-y-1 hover:border-blue-200 md:flex md:min-h-0 md:flex-col md:rounded-[24px] md:p-6">
+                  <div className="grid h-11 w-11 place-items-center rounded-2xl bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white md:h-[52px] md:w-[52px]"><Icon size={22} className="md:h-6 md:w-6" /></div>
+                  <h3 className="mt-3 text-[17px] font-bold leading-[1.2] text-[#0d1b2f] md:mt-5 md:text-lg md:leading-normal">{title}</h3>
+                  <p className="mt-2 hidden flex-1 text-sm leading-6 text-slate-600 md:block">{description}</p>
+                  <a href="#kontakt" className="mt-3 flex items-center gap-1 text-[13px] font-bold tracking-[.01em] text-[#2563eb] md:mt-5 md:text-sm">Anfragen <ChevronRight size={16} /></a>
                 </article>
               ))}
             </div>
