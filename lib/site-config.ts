@@ -7,7 +7,7 @@ export const siteConfig = {
   whatsappHref: "4915221591541",
   email: "Info@handwerkersofort.com",
   address: "[Straße, Hausnummer, PLZ Ort]",
-  url: "https://handwerker-sofort.de",
+  url: "https://handwerkersofort.com",
   pricePerHour: "35 €",
   travelPrice: "XX €",
 };
