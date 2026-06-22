@@ -177,7 +177,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section">
+        <section id="beispiele" className="section">
           <div className="container-site">
             <div className="mx-auto max-w-2xl text-center"><p className="eyebrow">Saubere Ergebnisse</p><h2 className="section-title mt-3">Beispiele unserer Arbeiten</h2></div>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

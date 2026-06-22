@@ -7,9 +7,9 @@ import { siteConfig } from "@/lib/site-config";
 
 const links = [
   ["Leistungen", "#leistungen"],
+  ["Beispiele unserer Arbeiten", "#beispiele"],
   ["Über uns", "#ueber-uns"],
-  ["Ablauf", "#ablauf"],
-  ["Preise", "#preise"],
+  ["Ablauf & Preise", "#ablauf"],
   ["Kontakt", "#kontakt"],
 ];
 
