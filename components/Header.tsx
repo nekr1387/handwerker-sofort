@@ -18,8 +18,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 shadow-[0_10px_30px_rgba(15,35,66,.05)] backdrop-blur-xl">
-      <div className="container-site flex h-[82px] items-center justify-between">
-        <a href="#start" className="flex items-center gap-3" aria-label="Zur Startseite">
+      <div className="container-site flex h-[82px] items-center justify-between gap-4">
+        <a href="#start" className="flex shrink-0 items-center gap-3" aria-label="Zur Startseite">
           <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200">
             <Image
               src="/logo.png"
@@ -34,9 +34,9 @@ export function Header() {
             Handwerker <span className="text-[#1456a0]">Sofort</span>
           </span>
         </a>
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Hauptnavigation">
+        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-3 lg:flex xl:gap-7" aria-label="Hauptnavigation">
           {links.map(([label, href]) => (
-            <a key={href} href={href} className="rounded-full px-1.5 py-2 text-[0.96rem] font-semibold tracking-[.025em] text-slate-600 hover:text-[#2563eb]">
+            <a key={href} href={href} className="rounded-full px-1 py-2 text-[0.9rem] font-semibold tracking-[.025em] text-slate-600 hover:text-[#2563eb] xl:px-1.5 xl:text-[0.96rem]">
               {label}
             </a>
           ))}
