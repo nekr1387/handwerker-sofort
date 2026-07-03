@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
+export const maxDuration = 30;
 
 type ContactPayload = {
   name?: string;
@@ -25,13 +26,32 @@ function logContact(message: string, details?: Record<string, unknown>) {
 }
 
 function logContactError(message: string, error: unknown) {
+  const smtpError = error as Error & {
+    code?: string;
+    command?: string;
+    response?: string;
+    responseCode?: number;
+    errno?: string;
+    syscall?: string;
+    address?: string;
+    port?: number;
+  };
+
   console.error(
     `[contact-api] ${message}`,
     error instanceof Error
       ? {
-          name: error.name,
-          message: error.message,
-          stack: error.stack,
+          name: smtpError.name,
+          message: smtpError.message,
+          code: smtpError.code,
+          command: smtpError.command,
+          response: smtpError.response,
+          responseCode: smtpError.responseCode,
+          errno: smtpError.errno,
+          syscall: smtpError.syscall,
+          address: smtpError.address,
+          port: smtpError.port,
+          stack: smtpError.stack,
         }
       : error
   );
@@ -102,12 +122,12 @@ export async function POST(request: NextRequest) {
     hasBody: Boolean(data),
     body: data
       ? {
-          name: data.name,
-          phone: data.phone,
-          email: data.email,
-          address: data.address,
-          message: data.message,
-          privacy: data.privacy,
+          hasName: Boolean(sanitize(data.name)),
+          hasPhone: Boolean(sanitize(data.phone)),
+          hasEmail: Boolean(sanitize(data.email)),
+          hasAddress: Boolean(sanitize(data.address)),
+          messageLength: sanitize(data.message).length,
+          privacyAccepted: data.privacy === true,
         }
       : null,
   });
@@ -139,10 +159,13 @@ export async function POST(request: NextRequest) {
   }
 
   if (!isEmail(payload.email)) {
-    logContact("Rejecting request: invalid email address", {
-      email: payload.email,
-    });
+    logContact("Rejecting request: invalid email address");
     return NextResponse.json({ error: "Bitte geben Sie eine gültige E-Mail-Adresse ein." }, { status: 400 });
+  }
+
+  if (payload.message.length < 10) {
+    logContact("Rejecting request: message too short", { messageLength: payload.message.length });
+    return NextResponse.json({ error: "Bitte beschreiben Sie Ihre Aufgabe mit mindestens 10 Zeichen." }, { status: 400 });
   }
 
   const smtpHost = process.env.SMTP_HOST || "";
@@ -189,6 +212,9 @@ export async function POST(request: NextRequest) {
       port: smtpPort,
       secure: smtpPort === 465,
       requireTLS: smtpPort === 587,
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 20_000,
       auth: {
         user: smtpUser,
         pass: smtpPass,
@@ -196,6 +222,21 @@ export async function POST(request: NextRequest) {
     });
 
     const subject = "Neue Anfrage über Handwerker Sofort";
+
+    logContact("Verifying IONOS SMTP connection and authentication", {
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
+      user: smtpUser,
+    });
+
+    await transporter.verify();
+
+    logContact("IONOS SMTP connection and authentication verified", {
+      host: smtpHost,
+      port: smtpPort,
+      user: smtpUser,
+    });
 
     logContact("Sending email with IONOS SMTP", {
       recipient,
