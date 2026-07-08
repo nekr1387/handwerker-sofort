@@ -19,6 +19,7 @@ const services: Service[] = [
   { title: "Möbelreparatur", description: "Defekte Regale, Schränke und Türen schnell und fachgerecht repariert.", icon: Drill },
   { title: "Hausmeisterservice", description: "Regelmäßige Betreuung für Immobilien und kleine Betriebe.", icon: House },
   { title: "Kleinreparaturen", description: "Praktische Hilfe bei kleinen Defekten in Haus und Wohnung.", icon: Wrench },
+  { title: "Haussitting", description: "Wir kümmern uns während Ihrer Abwesenheit um Ihr Zuhause – Briefkasten leeren, Pflanzen gießen, Haustiere versorgen und regelmäßige Kontrolle von Haus oder Wohnung.", icon: ShieldCheck },
   { title: "Möbelmontage", description: "Schränke, Betten, Kommoden und Möbel fachgerecht aufgebaut.", icon: Hammer },
   { title: "Küchenmontage", description: "Unterstützung beim Aufbau und bei Anpassungen Ihrer Küche.", icon: Ruler },
   { title: "Lampenmontage", description: "Lampen und Leuchten fachgerecht montiert.", icon: LampCeiling },
