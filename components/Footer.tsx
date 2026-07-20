@@ -6,7 +6,8 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { siteConfig } from "@/lib/site-config";
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { routePrefix, t } = useLanguage();
+  const sectionHref = (hash: string) => `${routePrefix}${hash}`;
 
   return (
     <footer className="bg-[#081a33] pb-24 pt-20 text-slate-300 md:pb-10">
@@ -22,9 +23,9 @@ export function Footer() {
         <div>
           <h3 className="font-bold tracking-[.01em] text-white">{t.footer.quickLinks}</h3>
           <div className="mt-5 grid gap-3">
-            <a href="/#start">{t.footer.home}</a>
-            <a href="/#leistungen">{t.footer.services}</a>
-            <a href="/#kontakt">{t.footer.contact}</a>
+            <a href={sectionHref("#start")}>{t.footer.home}</a>
+            <a href={sectionHref("#leistungen")}>{t.footer.services}</a>
+            <a href={sectionHref("#kontakt")}>{t.footer.contact}</a>
             <Link href="/impressum">{t.footer.imprint}</Link>
             <Link href="/datenschutz">{t.footer.privacy}</Link>
           </div>

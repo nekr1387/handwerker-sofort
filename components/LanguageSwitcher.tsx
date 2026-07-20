@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Locale } from "@/translations";
+import { usePathname, useRouter } from "next/navigation";
 
 const options: Array<{ locale: Locale; label: "german" | "french" }> = [
   { locale: "de", label: "german" },
@@ -9,10 +10,24 @@ const options: Array<{ locale: Locale; label: "german" | "french" }> = [
 ];
 
 export function LanguageSwitcher({ className = "", compact = false }: { className?: string; compact?: boolean }) {
-  const { locale, setLocale, t } = useLanguage();
+  const { locale, t } = useLanguage();
+  const pathname = usePathname();
+  const router = useRouter();
   const wrapperSize = compact ? "p-0.5 text-[11px]" : "p-1.5 text-[13px]";
   const buttonSize = compact ? "px-1.5 py-1" : "px-3 py-2";
   const separatorSize = compact ? "px-0.5" : "px-1";
+
+  function switchLanguage(nextLocale: Locale) {
+    const hash = window.location.hash;
+    const nextPath = nextLocale === "fr" ? "/fr" : "/";
+    const currentPath = pathname || "/";
+
+    if (currentPath === nextPath && window.location.hash === hash) {
+      return;
+    }
+
+    router.push(`${nextPath}${hash}`);
+  }
 
   return (
     <div
@@ -25,7 +40,7 @@ export function LanguageSwitcher({ className = "", compact = false }: { classNam
           <span key={option.locale} className="inline-flex items-center">
             <button
               type="button"
-              onClick={() => setLocale(option.locale)}
+              onClick={() => switchLanguage(option.locale)}
               className={`rounded-full ${buttonSize} transition ${active ? "bg-[#10233f] text-white shadow-sm" : "hover:bg-blue-50 hover:text-[#2563eb]"}`}
               aria-pressed={active}
             >

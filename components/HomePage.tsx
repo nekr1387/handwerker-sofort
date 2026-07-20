@@ -3,7 +3,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight, Bath, Check, CheckCircle2, ChevronRight,
-  DoorOpen, Drill, Flower2, Hammer, House, Image as ImageIcon,
+  DoorOpen, Drill, Hammer, House, Image as ImageIcon,
   LampCeiling, MapPin, MessageCircle, Paintbrush, Phone, Ruler, ShieldCheck,
   Sparkles, Tv, Users, Wrench,
 } from "lucide-react";
@@ -36,8 +36,9 @@ const serviceIcons: ServiceIcon[] = [
   { icon: Sparkles },
 ];
 
-export default function Home() {
-  const { locale, t } = useLanguage();
+export function HomePage() {
+  const { locale, routePrefix, t } = useLanguage();
+  const sectionHref = (hash: string) => `${routePrefix}${hash}`;
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
@@ -102,7 +103,7 @@ export default function Home() {
                 {t.hero.subheadline}
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a href="#kontakt" className="btn-primary"><ArrowRight size={19} /> {t.hero.requestCta}</a>
+                <a href={sectionHref("#kontakt")} className="btn-primary"><ArrowRight size={19} /> {t.hero.requestCta}</a>
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-whatsapp"><MessageCircle size={19} /> {t.hero.whatsappCta}</a>
               </div>
               <div className="mt-9 grid grid-cols-2 gap-3 text-sm font-bold text-slate-700 sm:grid-cols-4">
@@ -164,7 +165,7 @@ export default function Home() {
                   <div className="grid h-11 w-11 place-items-center rounded-2xl bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white md:h-[52px] md:w-[52px]"><Icon size={22} className="md:h-6 md:w-6" /></div>
                   <h3 className="mt-3 min-w-0 text-left text-[17px] font-bold leading-[1.2] text-[#0d1b2f] md:mt-5 md:text-lg md:leading-normal" lang={locale}>{title}</h3>
                   <p className="mt-2 hidden flex-1 text-sm leading-6 text-slate-600 md:block">{description}</p>
-                  <a href="#kontakt" className="mt-3 flex items-center gap-1 text-[13px] font-bold tracking-[.01em] text-[#2563eb] md:mt-5 md:text-sm">{t.services.cta} <ChevronRight size={16} /></a>
+                  <a href={sectionHref("#kontakt")} className="mt-3 flex items-center gap-1 text-[13px] font-bold tracking-[.01em] text-[#2563eb] md:mt-5 md:text-sm">{t.services.cta} <ChevronRight size={16} /></a>
                 </article>
                 );
               })}
@@ -233,7 +234,7 @@ export default function Home() {
                   <div key={item} className="flex items-center gap-2 font-bold text-[#0b2147]"><CheckCircle2 size={20} className="text-emerald-600" /> {item}</div>
                 ))}
               </div>
-              <a href="#kontakt" className="btn-primary mt-8">{t.about.cta} <ArrowRight size={18} /></a>
+              <a href={sectionHref("#kontakt")} className="btn-primary mt-8">{t.about.cta} <ArrowRight size={18} /></a>
             </div>
           </div>
         </section>
