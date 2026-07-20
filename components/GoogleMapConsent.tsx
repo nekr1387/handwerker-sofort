@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { MapPin } from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function GoogleMapConsent() {
   const [accepted, setAccepted] = useState(false);
+  const { t } = useLanguage();
 
   if (accepted) {
     return (
@@ -15,7 +17,7 @@ export function GoogleMapConsent() {
         style={{ border: 0, borderRadius: "12px" }}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="Google Maps Karte Kehl"
+        title={t.map.iframeTitle}
       />
     );
   }
@@ -24,13 +26,12 @@ export function GoogleMapConsent() {
     <div className="grid min-h-[300px] w-full place-items-center rounded-xl bg-white/5 p-5 text-center text-blue-100">
       <div className="max-w-sm">
         <MapPin className="mx-auto mb-3 text-blue-200" size={34} />
-        <strong className="text-white">Google Maps anzeigen</strong>
+        <strong className="text-white">{t.map.title}</strong>
         <p className="mt-3 text-sm leading-6">
-          Beim Laden der Karte wird eine Verbindung zu Google hergestellt. Dabei können personenbezogene Daten,
-          insbesondere Ihre IP-Adresse, an Google übermittelt werden.
+          {t.map.text}
         </p>
         <button type="button" onClick={() => setAccepted(true)} className="btn-secondary mt-5">
-          Karte laden
+          {t.map.button}
         </button>
       </div>
     </div>
