@@ -21,19 +21,19 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 shadow-[0_10px_30px_rgba(15,35,66,.05)] backdrop-blur-xl">
-      <div className="container-site flex h-[82px] items-center justify-between gap-4">
-        <a href="#start" className="flex min-w-0 items-center gap-3" aria-label={t.nav.homeAria}>
-          <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200">
+      <div className="container-site flex h-[82px] items-center justify-between gap-2 lg:gap-4">
+        <a href="#start" className="flex min-w-0 flex-1 items-center gap-2 lg:flex-none lg:gap-3" aria-label={t.nav.homeAria}>
+          <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 sm:h-12 sm:w-12">
             <Image
               src="/logo.png"
               alt="Handwerker Sofort Logo"
               fill
-              sizes="48px"
+              sizes="(max-width: 639px) 44px, 48px"
               className="object-cover"
               priority
             />
           </span>
-          <span className="min-w-0 whitespace-nowrap text-[1.32rem] font-extrabold tracking-[-.03em] text-[#10233f]">
+          <span className="min-w-0 whitespace-nowrap text-[1.08rem] font-extrabold tracking-[-.03em] text-[#10233f] sm:text-[1.32rem]">
             Handwerker <span className="text-[#1456a0]">Sofort</span>
           </span>
         </a>
@@ -44,13 +44,17 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <LanguageSwitcher className="hidden lg:inline-flex" />
-        <a href={`tel:${siteConfig.phoneHref}`} className="btn-primary hidden text-[0.96rem] lg:inline-flex">
-          <Phone size={18} /> {t.nav.call}
-        </a>
+        <div className="hidden lg:block">
+          <LanguageSwitcher />
+        </div>
+        <div className="hidden lg:block">
+          <a href={`tel:${siteConfig.phoneHref}`} className="btn-primary text-[0.96rem]">
+            <Phone size={18} /> {t.nav.call}
+          </a>
+        </div>
         <button
           onClick={() => setOpen(!open)}
-          className="grid h-12 w-12 place-items-center rounded-2xl border border-slate-200 bg-white shadow-sm lg:hidden"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-slate-200 bg-white shadow-sm sm:h-12 sm:w-12 lg:hidden"
           aria-expanded={open}
           aria-label={t.nav.menuOpen}
         >
