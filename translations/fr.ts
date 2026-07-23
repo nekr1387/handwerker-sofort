@@ -45,7 +45,7 @@ export const fr = {
         "Exécution fiable",
         "Particuliers & professionnels",
       ],
-      area: "Offenburg · Kehl · Ortenaukreis",
+      area: "Offenbourg, Kehl, Strasbourg et Ortenaukreis",
       contactLabel: "Joignable directement",
     },
   },
@@ -136,6 +136,7 @@ export const fr = {
     phone: "Téléphone",
     whatsapp: "WhatsApp",
     serviceArea: "Zone d’intervention",
+    serviceAreaValue: "Offenbourg, Kehl, Strasbourg et Ortenaukreis",
   },
   map: {
     iframeTitle: "Carte Google Maps de Kehl",

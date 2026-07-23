@@ -40,7 +40,7 @@ export function Footer() {
               <Mail size={18} /> {siteConfig.email}
             </a>
             <p className="flex gap-3">
-              <MapPin size={18} /> {siteConfig.serviceArea}
+              <MapPin size={18} /> {t.contactSection.serviceAreaValue}
             </p>
             <p className="flex gap-3">
               <Clock3 size={18} /> {t.footer.hours}

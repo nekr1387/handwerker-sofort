@@ -43,7 +43,7 @@ export const de = {
         "Zuverlässige Ausführung",
         "Privat & Gewerbe",
       ],
-      area: "Offenburg · Kehl · Ortenaukreis",
+      area: "Offenburg, Kehl, Strasbourg und Ortenaukreis",
       contactLabel: "Direkt erreichbar",
     },
   },
@@ -134,6 +134,7 @@ export const de = {
     phone: "Telefon",
     whatsapp: "WhatsApp",
     serviceArea: "Einsatzgebiet",
+    serviceAreaValue: "Offenburg, Kehl, Strasbourg und Ortenaukreis",
   },
   map: {
     iframeTitle: "Google Maps Karte Kehl",

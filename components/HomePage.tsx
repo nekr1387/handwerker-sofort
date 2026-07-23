@@ -296,7 +296,7 @@ export function HomePage() {
                 <div className="mt-8 grid gap-4">
                   <a href={`tel:${siteConfig.phoneHref}`} className="flex items-center gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/15"><Phone /><span><small className="block text-blue-200">{t.contactSection.phone}</small><strong>{siteConfig.phoneDisplay}</strong></span></a>
                   <a href={whatsappUrl} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/15"><MessageCircle /><span><small className="block text-blue-200">{t.contactSection.whatsapp}</small><strong>{siteConfig.phoneDisplay}</strong></span></a>
-                  <div className="flex items-center gap-4 rounded-xl bg-white/10 p-4"><MapPin /><span><small className="block text-blue-200">{t.contactSection.serviceArea}</small><strong>{siteConfig.serviceArea}</strong></span></div>
+                  <div className="flex items-center gap-4 rounded-xl bg-white/10 p-4"><MapPin /><span><small className="block text-blue-200">{t.contactSection.serviceArea}</small><strong>{t.contactSection.serviceAreaValue}</strong></span></div>
                 </div>
                 <div className="mt-8 grid min-h-44 place-items-center rounded-xl border border-dashed border-blue-300/50 bg-white/5 text-center text-blue-200">
                   <GoogleMapConsent />
