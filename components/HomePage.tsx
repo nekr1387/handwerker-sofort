@@ -183,7 +183,6 @@ export function HomePage() {
                 { type: "image", src: "/2.JPG" },
                 { type: "image", src: "/3.JPEG" },
                 { type: "image", src: "/4.png" },
-                { type: "image", src: "/5.JPG" },
                 { type: "image", src: "/6.png" },
                 { type: "image", src: "/7.png" },
                 { type: "image", src: "/8.png" },
