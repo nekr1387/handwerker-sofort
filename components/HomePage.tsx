@@ -178,29 +178,40 @@ export function HomePage() {
             <div className="mx-auto max-w-2xl text-center"><p className="eyebrow">{t.examples.eyebrow}</p><h2 className="section-title mt-3">{t.examples.title}</h2></div>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                "/1.JPG",
-                "/2.JPG",
-                "/3.JPEG",
-                "/4.png",
-                "/5.JPG",
-                "/6.png",
-                "/7.png",
-                "/8.png",
-                "/9.png",
-                "/10.png",
-                "/11.png",
-                "/12.png",
-              ].map((src, index) => {
+                { type: "image", src: "/1.JPG" },
+                { type: "image", src: "/2.JPG" },
+                { type: "image", src: "/3.JPEG" },
+                { type: "image", src: "/4.png" },
+                { type: "image", src: "/5.JPG" },
+                { type: "image", src: "/6.png" },
+                { type: "image", src: "/7.png" },
+                { type: "image", src: "/8.png" },
+                { type: "image", src: "/9.png" },
+                { type: "image", src: "/10.png" },
+                { type: "image", src: "/11.png" },
+                { type: "image", src: "/12.png" },
+                { type: "video", src: "/beispiel.mp4" },
+              ].map((item, index) => {
                 const isPortraitImage = index >= 1 && index <= 4;
 
                 return (
-                  <div key={src} className="card grid aspect-[4/3] place-items-center overflow-hidden bg-slate-50 p-3">
-                    <img
-                      src={src}
-                      alt={`${t.examples.imageAlt} ${index + 1}`}
-                      className={`h-full w-full rounded-2xl ${isPortraitImage ? "bg-slate-100 object-contain object-center" : "object-contain"}`}
-                      loading="lazy"
-                    />
+                  <div key={item.src} className="card grid aspect-[4/3] place-items-center overflow-hidden bg-slate-50 p-3">
+                    {item.type === "video" ? (
+                      <video
+                        src={item.src}
+                        className="h-full w-full rounded-2xl object-cover"
+                        controls
+                        playsInline
+                        preload="metadata"
+                      />
+                    ) : (
+                      <img
+                        src={item.src}
+                        alt={`${t.examples.imageAlt} ${index + 1}`}
+                        className={`h-full w-full rounded-2xl ${isPortraitImage ? "bg-slate-100 object-contain object-center" : "object-contain"}`}
+                        loading="lazy"
+                      />
+                    )}
                   </div>
                 );
               })}
