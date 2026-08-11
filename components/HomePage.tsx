@@ -178,6 +178,7 @@ export function HomePage() {
             <div className="mx-auto max-w-2xl text-center"><p className="eyebrow">{t.examples.eyebrow}</p><h2 className="section-title mt-3">{t.examples.title}</h2></div>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
+                { type: "video", src: "/beispiel.mp4" },
                 { type: "image", src: "/1.JPG" },
                 { type: "image", src: "/2.JPG" },
                 { type: "image", src: "/3.JPEG" },
@@ -190,9 +191,9 @@ export function HomePage() {
                 { type: "image", src: "/10.png" },
                 { type: "image", src: "/11.png" },
                 { type: "image", src: "/12.png" },
-                { type: "video", src: "/beispiel.mp4" },
               ].map((item, index) => {
-                const isPortraitImage = index >= 1 && index <= 4;
+                const imageIndex = item.type === "image" ? index - 1 : -1;
+                const isPortraitImage = imageIndex >= 1 && imageIndex <= 4;
 
                 return (
                   <div key={item.src} className="card grid aspect-[4/3] place-items-center overflow-hidden bg-slate-50 p-3">
@@ -200,9 +201,11 @@ export function HomePage() {
                       <video
                         src={item.src}
                         className="h-full w-full rounded-2xl object-cover"
-                        controls
+                        autoPlay
+                        muted
+                        loop
                         playsInline
-                        preload="metadata"
+                        preload="auto"
                       />
                     ) : (
                       <img
