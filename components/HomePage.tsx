@@ -201,10 +201,10 @@ export function HomePage() {
             <div className="mx-auto max-w-2xl text-center"><p className="eyebrow">{t.examples.eyebrow}</p><h2 className="section-title mt-3">{t.examples.title}</h2></div>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                { type: "video", src: "/beispiel.mp4" },
+                { type: "video", src: "/fence.mp4" },
                 { type: "video", src: "/bed.mp4" },
                 { type: "video", src: "/shower.mp4" },
-                { type: "video", src: "/fence.mp4" },
+                { type: "video", src: "/beispiel.mp4" },
                 { type: "image", src: "/1.JPG" },
                 { type: "image", src: "/2.JPG" },
                 { type: "image", src: "/3.JPEG" },
