@@ -44,11 +44,31 @@ export function HomePage() {
     "@type": "HomeAndConstructionBusiness",
     name: siteConfig.name,
     url: siteConfig.url,
-    telephone: siteConfig.phoneHref,
+    telephone: siteConfig.phoneDisplay,
     email: siteConfig.email,
-    address: { "@type": "PostalAddress", streetAddress: siteConfig.address, addressCountry: "DE" },
-    areaServed: siteConfig.serviceArea,
-    priceRange: "€€",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.address.streetAddress,
+      postalCode: siteConfig.address.postalCode,
+      addressLocality: siteConfig.address.addressLocality,
+      addressCountry: siteConfig.address.addressCountry,
+    },
+    areaServed: siteConfig.serviceAreas.map((name) => ({ "@type": "Place", name })),
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: siteConfig.phoneDisplay,
+      email: siteConfig.email,
+      contactType: "customer service",
+      areaServed: "DE",
+      availableLanguage: ["de", "fr"],
+    },
+    inLanguage: locale,
+  };
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
     inLanguage: locale,
   };
   const faqSchema = {
@@ -179,6 +199,9 @@ export function HomePage() {
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 { type: "video", src: "/beispiel.mp4" },
+                { type: "video", src: "/bed.mp4" },
+                { type: "video", src: "/shower.mp4" },
+                { type: "video", src: "/fence.mp4" },
                 { type: "image", src: "/1.JPG" },
                 { type: "image", src: "/2.JPG" },
                 { type: "image", src: "/3.JPEG" },
@@ -191,7 +214,7 @@ export function HomePage() {
                 { type: "image", src: "/11.png" },
                 { type: "image", src: "/12.png" },
               ].map((item, index) => {
-                const imageIndex = item.type === "image" ? index - 1 : -1;
+                const imageIndex = item.type === "image" ? index - 4 : -1;
                 const isPortraitImage = imageIndex >= 1 && imageIndex <= 4;
 
                 return (
@@ -209,7 +232,7 @@ export function HomePage() {
                     ) : (
                       <img
                         src={item.src}
-                        alt={`${t.examples.imageAlt} ${index + 1}`}
+                        alt={`${t.examples.imageAlt} ${imageIndex + 2}`}
                         className={`h-full w-full rounded-2xl ${isPortraitImage ? "bg-slate-100 object-contain object-center" : "object-contain"}`}
                         loading="lazy"
                       />
@@ -329,6 +352,7 @@ export function HomePage() {
       </main>
       <Footer />
       <MobileActions />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     </>
