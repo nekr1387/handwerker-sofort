@@ -39,6 +39,11 @@ const serviceIcons: ServiceIcon[] = [
 export function HomePage() {
   const { locale, routePrefix, t } = useLanguage();
   const sectionHref = (hash: string) => `${routePrefix}${hash}`;
+  const businessConfig: {
+    address: string | Record<string, string>;
+    serviceAreas?: readonly string[];
+  } = siteConfig;
+  const address = businessConfig.address;
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
@@ -46,14 +51,12 @@ export function HomePage() {
     url: siteConfig.url,
     telephone: siteConfig.phoneDisplay,
     email: siteConfig.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.address.streetAddress,
-      postalCode: siteConfig.address.postalCode,
-      addressLocality: siteConfig.address.addressLocality,
-      addressCountry: siteConfig.address.addressCountry,
-    },
-    areaServed: siteConfig.serviceAreas.map((name) => ({ "@type": "Place", name })),
+    address: typeof address === "string"
+      ? (address.includes("[") ? undefined : address)
+      : { "@type": "PostalAddress", ...address },
+    areaServed: businessConfig.serviceAreas
+      ? businessConfig.serviceAreas.map((name) => ({ "@type": "Place", name }))
+      : siteConfig.serviceArea,
     contactPoint: {
       "@type": "ContactPoint",
       telephone: siteConfig.phoneDisplay,
